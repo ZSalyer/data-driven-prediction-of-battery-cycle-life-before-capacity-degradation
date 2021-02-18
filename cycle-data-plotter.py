@@ -5,17 +5,20 @@ Created on Wed Feb 17 20:32:47 2021
 @author: Zach
 """
 
-import matplotlib.pyplot as plt
 import pickle
+import matplotlib.pyplot as plt
 
-batch1 = pickle.load(open(r'.\Data\batch1.pkl', 'rb'))
-#remove batteries that do not reach 80% capacity
-# del batch1['b1c8']
-# del batch1['b1c10']
-# del batch1['b1c12']
-# del batch1['b1c13']
-# del batch1['b1c22']
+test_data = pickle.load(open(r'.\Data\batch1.pkl', 'rb'))
 
-numBat1 = len(batch1.keys())
+#Add moving average for discharge capacity
+#test_data['summary']['QD_ma'] = 
 
-batch2 = pickle.load(open(r'.\Data\batch2.pkl','rb'))
+#Plot capacity fade versus cycle number for all cells in a batch
+fig1 = plt.figure()
+for cell_id in test_data.keys():
+    plt.plot(test_data[cell_id]['summary']['cycle'], test_data[cell_id]['summary']['QD'])
+
+fig2 = plt.figure()
+#Plot capacity fade versus cycle number for all cells in a batch
+for cell_id in test_data.keys():
+    plt.plot(test_data[cell_id]['summary']['cycle'], test_data[cell_id]['summary']['Tmax'])
