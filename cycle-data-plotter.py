@@ -22,3 +22,4 @@ fig2 = plt.figure()
 #Plot capacity fade versus cycle number for all cells in a batch
 for cell_id in test_data.keys():
     plt.plot(test_data[cell_id]['summary']['cycle'], test_data[cell_id]['summary']['Tmax'])
+    
